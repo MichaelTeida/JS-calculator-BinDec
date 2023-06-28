@@ -7,18 +7,29 @@ class DecCalculator extends Calculator {
      */
     add(numberX, numberY) {
         let result = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
         for (let i = numberX.length - 1; i >= 0; i--) {
             let carryBit = numberX[i] + numberY[i] + result[i];
-            if (carryBit === 2) {
-                result[i] = 0;
+            if (carryBit >= 10) {
+                result[i] = carryBit - 10;
                 result[i - 1] = 1;
-            } else if (carryBit === 3) {
-                result[i] = 1;
-                result[i - 1] = 1;
-            } else {
+            }else {
                 result[i] = carryBit;
             }
         }
+
+        // for (let i = numberX.length - 1; i >= 0; i--) {
+        //     let carryBit = numberX[i] + numberY[i] + result[i];
+        //     if (carryBit === 2) {
+        //         result[i] = 0;
+        //         result[i - 1] = 1;
+        //     } else if (carryBit === 3) {
+        //         result[i] = 1;
+        //         result[i - 1] = 1;
+        //     } else {
+        //         result[i] = carryBit;
+        //     }
+        // }
         return result;
     }
 
